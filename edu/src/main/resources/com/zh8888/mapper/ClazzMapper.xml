@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zh8888.mapper.ClazzMapper">
+
+    <select id="page" resultType="com.zh8888.pojo.Clazz">
+        select clazz.*, emp.name masterName
+        from clazz
+        left join emp on clazz.master_id = emp.id
+        <where>
+            <if test="name != null and name != '' ">
+                clazz.name like concat('%', #{name}, '%')
+            </if>
+
+            <if test="begin != null and end!=null">
+                and clazz.end_date between #{begin} and #{end}
+            </if>
+        </where>
+        order by clazz.update_time desc
+
+    </select>
+
+
+</mapper>

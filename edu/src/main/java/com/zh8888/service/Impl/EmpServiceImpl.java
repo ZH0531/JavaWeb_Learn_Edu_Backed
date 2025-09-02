@@ -2,11 +2,11 @@ package com.zh8888.service.Impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.zh8888.Utils.AliyunOSSOperator;
+import com.zh8888.pojo.EmpPageParam;
+import com.zh8888.utils.AliyunOSSOperator;
 import com.zh8888.mapper.EmpMapper;
 import com.zh8888.pojo.Emp;
 import com.zh8888.pojo.EmpExpr;
-import com.zh8888.pojo.EmpQueryParam;
 import com.zh8888.pojo.PageResult;
 import com.zh8888.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
@@ -24,10 +24,10 @@ import java.util.List;
 public class EmpServiceImpl implements EmpService {
 
     @Autowired
-    EmpMapper empMapper;
+    private EmpMapper empMapper;
 
     @Autowired
-    AliyunOSSOperator aliyunOSSOperator;
+    private AliyunOSSOperator aliyunOSSOperator;
 
     /**
      * 分页查询员工信息
@@ -35,7 +35,7 @@ public class EmpServiceImpl implements EmpService {
      * @return 员工列表
      */
     @Override
-    public PageResult<Emp> page(EmpQueryParam param) {
+    public PageResult<Emp> page(EmpPageParam param) {
         PageHelper.startPage(param.getPage(), param.getPageSize());
 
         Page<Emp> empList = (Page<Emp>) empMapper.page(param);
@@ -124,5 +124,10 @@ public class EmpServiceImpl implements EmpService {
             exprList.forEach(expr -> expr.setEmpId(emp.getId()));//设置员工id
             empMapper.insertExpr(exprList);
         }
+    }
+
+    @Override
+    public List<Emp> getEmpList() {
+        return empMapper.page(null);
     }
 }

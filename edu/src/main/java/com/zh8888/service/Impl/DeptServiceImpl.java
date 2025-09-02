@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class DeptServiceImpl implements DeptService {
     @Autowired
-    DeptMapper deptMapper;
+    private DeptMapper deptMapper;
 
     @Override
     public List<Dept> findAll() {

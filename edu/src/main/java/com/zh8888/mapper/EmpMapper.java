@@ -2,15 +2,17 @@ package com.zh8888.mapper;
 
 import com.zh8888.pojo.Emp;
 import com.zh8888.pojo.EmpExpr;
-import com.zh8888.pojo.EmpQueryParam;
+import com.zh8888.pojo.EmpPageParam;
+import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface EmpMapper {
 
-    List<Emp> page(EmpQueryParam param);
+    List<Emp> page(EmpPageParam param);
 
 
     //    @Options(useGeneratedKeys = true, keyProperty = "id") 被xml覆盖
@@ -24,4 +26,10 @@ public interface EmpMapper {
     List<EmpExpr> getExprListByEmpId(Integer id);
 
     void updateEmp(Emp emp);
+
+    @MapKey("name")
+    List<Map<String, Object>> getEmpGenderData();
+
+    @MapKey("job")
+    List<Map<String, Object>> getEmpJobData();
 }

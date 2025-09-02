@@ -1,6 +1,6 @@
 package com.zh8888.controller;
 
-import com.zh8888.Utils.AliyunOSSOperator;
+import com.zh8888.utils.AliyunOSSOperator;
 import com.zh8888.pojo.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.util.Objects;
 @RestController
 public class UploadController {
     @Autowired
-    AliyunOSSOperator aliyunOSSOperator;
+    private AliyunOSSOperator aliyunOSSOperator;
 
     @PostMapping("/upload")
     public Result upload(MultipartFile file) throws Exception {

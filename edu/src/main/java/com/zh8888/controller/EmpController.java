@@ -1,7 +1,7 @@
 package com.zh8888.controller;
 
 import com.zh8888.pojo.Emp;
-import com.zh8888.pojo.EmpQueryParam;
+import com.zh8888.pojo.EmpPageParam;
 import com.zh8888.pojo.Result;
 import com.zh8888.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
@@ -15,10 +15,10 @@ import java.util.List;
 @RequestMapping("/emps")
 public class EmpController {
     @Autowired
-    EmpService empService;
+    private EmpService empService;
 
     @GetMapping
-    public Result page(EmpQueryParam param) {
+    public Result page(EmpPageParam param) {
         log.info("查询员工列表");
         log.info("参数：{}", param);
         return Result.success(empService.page(param));
@@ -56,6 +56,12 @@ public class EmpController {
         empService.updateEmpExpr(emp);
         log.info("更新工作经历成功");
         return Result.success();
+    }
+
+    @GetMapping("/list")
+    public Result getEmpList() {
+        log.info("查询所有员工列表");
+        return Result.success(empService.getEmpList());
     }
 
 }

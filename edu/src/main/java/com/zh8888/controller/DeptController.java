@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/depts")
 public class DeptController {
     @Autowired
-    DeptService deptService;
+    private DeptService deptService;
 
     @GetMapping
     public Result queryAll() {

@@ -1,4 +1,4 @@
-package com.zh8888.Utils;
+package com.zh8888.utils;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

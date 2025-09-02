@@ -1,15 +1,14 @@
 package com.zh8888.service;
 
 import com.zh8888.pojo.Emp;
-import com.zh8888.pojo.EmpQueryParam;
+import com.zh8888.pojo.EmpPageParam;
 import com.zh8888.pojo.PageResult;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 public interface EmpService {
 
-    PageResult<Emp> page(EmpQueryParam param);
+    PageResult<Emp> page(EmpPageParam param);
 
     void addEmp(Emp emp);
 
@@ -20,4 +19,6 @@ public interface EmpService {
     void updateEmp(Emp emp);
 
     void updateEmpExpr(Emp emp);
+
+    List<Emp> getEmpList();
 }
