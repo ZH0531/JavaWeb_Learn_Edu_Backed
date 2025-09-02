@@ -7,6 +7,36 @@
         insert into clazz (name, room, begin_date, end_date, master_id, subject, create_time, update_time)
         values (#{name}, #{room}, #{beginDate}, #{endDate}, #{masterId}, #{subject}, #{createTime}, #{updateTime})
     </insert>
+    <update id="updateClazz">
+        update clazz
+        <set>
+            <if test="name != null and name != '' ">
+                name = #{name},
+            </if>
+            <if test="room != null">
+                room = #{room},
+            </if>
+            <if test="beginDate != null">
+                begin_date = #{beginDate},
+            </if>
+            <if test="endDate != null">
+                end_Date = #{endDate},
+            </if>
+            <if test="masterId != null and masterId != '' ">
+                master_id = #{masterId},
+            </if>
+            <if test="subject != null">
+                subject = #{subject},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <delete id="deleteById">
+        delete from clazz where id = #{id}
+    </delete>
 
     <select id="page" resultType="com.zh8888.pojo.Clazz">
         select clazz.*, emp.name masterName
@@ -29,6 +59,9 @@
         from clazz
         left join emp on clazz.master_id = emp.id
         where clazz.id = #{id}
+    </select>
+    <select id="getStudentCountById" resultType="java.lang.Integer">
+        select count(*) from student where clazz_id = #{id}
     </select>
 
 

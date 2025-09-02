@@ -39,4 +39,14 @@ public class GlobalExceptionHandler {
             String msg = split[2].replace("'", "") + " 已存在!";
             return Result.error(msg);
     }
+    /**
+     * 处理自定义异常
+     * @param e 自定义异常
+     * @return 错误信息
+     */
+    @ExceptionHandler
+    public Result error(BaseException e) {
+        log.error("错误!", e);
+        return Result.error(e.getMessage());
+    }
 }

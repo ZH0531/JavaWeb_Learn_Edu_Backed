@@ -6,8 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Slf4j
 @RestController
 @RequestMapping("/clazzs")
@@ -38,5 +36,28 @@ public class clazzController {
         return Result.success(clazzService.getClazzById(id));
     }
 
+    @PutMapping
+    public Result updateClazz(@RequestBody Clazz clazz) {
+        log.info("更新班级");
+        log.info("参数：{}", clazz);
+        clazzService.updateClazz(clazz);
+        log.info("更新班级成功");
+        return Result.success();
+    }
+
+    @DeleteMapping("/{id}")
+    public Result deleteById(@PathVariable Integer id) {
+        log.info("删除班级");
+        log.info("参数：{}", id);
+        clazzService.deleteClazzById(id);
+        log.info("删除班级成功");
+        return Result.success();
+    }
+
+    @GetMapping("/list")
+    public Result getClazzList() {
+        log.info("查询班级列表");
+        return Result.success(clazzService.getClazzList());
+    }
 
 }

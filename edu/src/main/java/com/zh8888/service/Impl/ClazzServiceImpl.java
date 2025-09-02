@@ -2,10 +2,10 @@ package com.zh8888.service.Impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.zh8888.expression.ClazzNotEmptyException;
 import com.zh8888.mapper.ClazzMapper;
 import com.zh8888.pojo.Clazz;
 import com.zh8888.pojo.ClazzPageParam;
-import com.zh8888.pojo.Emp;
 import com.zh8888.pojo.PageResult;
 import com.zh8888.service.ClazzService;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -53,4 +54,24 @@ public class ClazzServiceImpl implements ClazzService {
         log.info("查询班级{}结果{}", id, clazz);
         return clazz;
     }
+
+    @Override
+    public void updateClazz(Clazz clazz) {
+        clazz.setUpdateTime(LocalDateTime.now());
+        log.info("更新员工{}", clazz);
+        clazzMapper.updateClazz(clazz);
+    }
+
+    @Override
+    public void deleteClazzById(Integer id)  {
+        Integer count = clazzMapper.getStudentCountById(id);//获取班级下人数
+        if (count > 0) throw new ClazzNotEmptyException("班级下有学生，不能删除!");
+        clazzMapper.deleteById(id);
+    }
+
+    @Override
+    public List<Clazz> getClazzList() {
+        return clazzMapper.page(null);
+    }
 }
+
