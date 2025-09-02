@@ -1,7 +1,7 @@
 package com.zh8888.controller;
 
-import com.zh8888.pojo.Dept;
-import com.zh8888.pojo.Result;
+import com.zh8888.pojo.entity.Dept;
+import com.zh8888.pojo.dto.Result;
 import com.zh8888.service.DeptService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

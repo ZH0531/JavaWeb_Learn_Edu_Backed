@@ -1,8 +1,8 @@
 package com.zh8888.service;
 
-import com.zh8888.pojo.Emp;
-import com.zh8888.pojo.EmpPageParam;
-import com.zh8888.pojo.PageResult;
+import com.zh8888.pojo.entity.Emp;
+import com.zh8888.pojo.page.EmpPageParam;
+import com.zh8888.pojo.dto.PageResult;
 
 import java.util.List;
 

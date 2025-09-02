@@ -1,7 +1,7 @@
 package com.zh8888.controller;
 
 import com.zh8888.utils.AliyunOSSOperator;
-import com.zh8888.pojo.Result;
+import com.zh8888.pojo.dto.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

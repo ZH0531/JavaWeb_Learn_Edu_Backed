@@ -1,8 +1,8 @@
 package com.zh8888.mapper;
 
-import com.zh8888.pojo.Emp;
-import com.zh8888.pojo.EmpExpr;
-import com.zh8888.pojo.EmpPageParam;
+import com.zh8888.pojo.entity.Emp;
+import com.zh8888.pojo.entity.EmpExpr;
+import com.zh8888.pojo.page.EmpPageParam;
 import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -32,4 +32,5 @@ public interface EmpMapper {
 
     @MapKey("job")
     List<Map<String, Object>> getEmpJobData();
+
 }

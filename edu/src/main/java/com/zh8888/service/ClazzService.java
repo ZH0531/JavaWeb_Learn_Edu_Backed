@@ -1,8 +1,8 @@
 package com.zh8888.service;
 
-import com.zh8888.pojo.Clazz;
-import com.zh8888.pojo.ClazzPageParam;
-import com.zh8888.pojo.PageResult;
+import com.zh8888.pojo.entity.Clazz;
+import com.zh8888.pojo.page.ClazzPageParam;
+import com.zh8888.pojo.dto.PageResult;
 
 import java.util.List;
 

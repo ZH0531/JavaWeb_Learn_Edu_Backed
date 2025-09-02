@@ -50,8 +50,8 @@
             <if test="clazzId != null">
                 clazz_id = #{clazzId},
             </if>
-
         </set>
+        where id = #{id}
     </update>
 
     <delete id="deleteStudentsById">
@@ -62,7 +62,7 @@
     </delete>
 
 
-    <select id="page" resultType="com.zh8888.pojo.Student">
+    <select id="page" resultType="com.zh8888.pojo.entity.Student">
         select student.*, clazz.name clazzName
         from student
         left join clazz on student.clazz_id = clazz.id
@@ -77,11 +77,36 @@
             and student.clazz_id = #{clazzId}
         </if>
         </where>
+        order by student.update_time desc
     </select>
-    <select id="getStudentById" resultType="com.zh8888.pojo.Student">
+    <select id="getStudentById" resultType="com.zh8888.pojo.entity.Student">
         select student.*, clazz.name clazzName
         from student
-        left join clazz on student.clazz_id = clazz.id
+                 left join clazz on student.clazz_id = clazz.id
         where student.id = #{id}
+    </select>
+
+    <select id="getStudentCountData">
+        select clazz.name clazzName, count(*) value
+        from student
+                 left join clazz on student.clazz_id = clazz.id
+        where student.clazz_id = clazz.id
+        group by student.clazz_id
+        order by count(*)
+    </select>
+    <select id="getStudentDegreeData">
+        select (case
+                    when degree = '1' then '初中'
+                    when degree = '2' then '高中'
+                    when degree = '3' then '大专'
+                    when degree = '4' then '本科'
+                    when degree = '5' then '硕士'
+                    when degree = '6' then '博士'
+                    else '其他' end)
+                        as name,
+               count(*) as value
+        from student
+        group by degree
+        order by value
     </select>
 </mapper>

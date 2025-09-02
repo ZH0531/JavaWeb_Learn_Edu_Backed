@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zh8888.mapper.EmpMapper">
 
-    <select id="page" resultType="com.zh8888.pojo.Emp">
+    <select id="page" resultType="com.zh8888.pojo.entity.Emp">
         select emp.*, dept.name deptName
         from emp
         left join dept on emp.dept_id = dept.id
@@ -52,10 +52,10 @@
     </delete>
 
 
-    <select id="getEmpById" resultType="com.zh8888.pojo.Emp">
+    <select id="getEmpById" resultType="com.zh8888.pojo.entity.Emp">
         select id, username, password, name, gender, phone, job, salary, image, entry_date, dept_id, create_time, update_time from emp where id = #{id}
     </select>
-    <select id="getExprListByEmpId" resultType="com.zh8888.pojo.EmpExpr">
+    <select id="getExprListByEmpId" resultType="com.zh8888.pojo.entity.EmpExpr">
         select id, emp_id, begin, end, company, job from emp_expr where emp_id = #{id}
     </select>
 
@@ -115,4 +115,5 @@
         group by job
         order by data
     </select>
+
 </mapper>

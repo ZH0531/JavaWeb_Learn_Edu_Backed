@@ -1,15 +1,13 @@
-package com.zh8888.pojo;
+package com.zh8888.pojo.report;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-public class JobReportData {
-    private List<Object> jobList;
+public class StudentCountData {
+    private List<Object> clazzList;
     private List<Object> dataList;
 }

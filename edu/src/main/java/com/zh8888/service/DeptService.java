@@ -1,6 +1,6 @@
 package com.zh8888.service;
 
-import com.zh8888.pojo.Dept;
+import com.zh8888.pojo.entity.Dept;
 
 import java.util.List;
 

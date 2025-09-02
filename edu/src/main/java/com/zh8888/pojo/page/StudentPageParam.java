@@ -1,4 +1,4 @@
-package com.zh8888.pojo;
+package com.zh8888.pojo.page;
 
 import lombok.Data;
 

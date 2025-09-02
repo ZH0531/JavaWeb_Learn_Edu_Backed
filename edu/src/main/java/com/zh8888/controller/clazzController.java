@@ -1,6 +1,9 @@
 package com.zh8888.controller;
 
-import com.zh8888.pojo.*;
+import com.zh8888.pojo.entity.Clazz;
+import com.zh8888.pojo.dto.Result;
+import com.zh8888.pojo.page.ClazzPageParam;
+import com.zh8888.pojo.dto.PageResult;
 import com.zh8888.service.ClazzService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

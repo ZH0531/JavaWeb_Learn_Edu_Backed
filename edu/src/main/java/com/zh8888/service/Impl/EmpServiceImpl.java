@@ -2,12 +2,12 @@ package com.zh8888.service.Impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.zh8888.pojo.EmpPageParam;
+import com.zh8888.pojo.page.EmpPageParam;
 import com.zh8888.utils.AliyunOSSOperator;
 import com.zh8888.mapper.EmpMapper;
-import com.zh8888.pojo.Emp;
-import com.zh8888.pojo.EmpExpr;
-import com.zh8888.pojo.PageResult;
+import com.zh8888.pojo.entity.Emp;
+import com.zh8888.pojo.entity.EmpExpr;
+import com.zh8888.pojo.dto.PageResult;
 import com.zh8888.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

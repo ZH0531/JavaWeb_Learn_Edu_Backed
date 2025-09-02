@@ -1,7 +1,8 @@
 package com.zh8888.controller;
 
-import com.zh8888.pojo.JobReportData;
-import com.zh8888.pojo.Result;
+import com.zh8888.pojo.report.JobReportData;
+import com.zh8888.pojo.dto.Result;
+import com.zh8888.pojo.report.StudentCountData;
 import com.zh8888.service.ReportService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,17 @@ public class ReportController {
         log.info("查询员工职位数据");
         JobReportData jobReportData = reportService.getEmpJobData();
         return Result.success(jobReportData);
+    }
+    @GetMapping("/studentCountData")
+    public Result getStudentCountReport() {
+        log.info("查询班级学生数量数据");
+        StudentCountData studentCountData = reportService.getStudentCountData();
+        return Result.success(studentCountData);
+    }
+    @GetMapping("/studentDegreeData")
+    public Result getStudentDegreeReport() {
+        log.info("查询学生学历数据");
+        List<Map<String, Object>> studentDegreeData = reportService.getStudentDegreeData();
+        return Result.success(studentDegreeData);
     }
 }

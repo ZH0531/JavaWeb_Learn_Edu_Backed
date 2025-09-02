@@ -1,6 +1,6 @@
 package com.zh8888.mapper;
 
-import com.zh8888.pojo.Dept;
+import com.zh8888.pojo.entity.Dept;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

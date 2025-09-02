@@ -1,9 +1,9 @@
 package com.zh8888.controller;
 
-import com.zh8888.pojo.PageResult;
-import com.zh8888.pojo.Result;
-import com.zh8888.pojo.Student;
-import com.zh8888.pojo.StudentPageParam;
+import com.zh8888.pojo.dto.PageResult;
+import com.zh8888.pojo.dto.Result;
+import com.zh8888.pojo.entity.Student;
+import com.zh8888.pojo.page.StudentPageParam;
 import com.zh8888.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +50,10 @@ public class StudentController {
         StudentService.deleteStudentsById(ids);
         return Result.success();
     }
-
-
+    @PutMapping("/violation/{id}/{score}")
+    public Result addViolation(@PathVariable Integer id, @PathVariable Short score) {
+        log.info("添加学生违规信息：{}", id);
+        StudentService.addStudentViolation(id, score);
+        return Result.success();
+    }
 }

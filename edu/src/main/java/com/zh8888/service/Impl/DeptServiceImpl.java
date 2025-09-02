@@ -1,7 +1,7 @@
 package com.zh8888.service.Impl;
 
 import com.zh8888.mapper.DeptMapper;
-import com.zh8888.pojo.Dept;
+import com.zh8888.pojo.entity.Dept;
 import com.zh8888.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

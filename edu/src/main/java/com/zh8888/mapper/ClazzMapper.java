@@ -1,7 +1,7 @@
 package com.zh8888.mapper;
 
-import com.zh8888.pojo.Clazz;
-import com.zh8888.pojo.ClazzPageParam;
+import com.zh8888.pojo.entity.Clazz;
+import com.zh8888.pojo.page.ClazzPageParam;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

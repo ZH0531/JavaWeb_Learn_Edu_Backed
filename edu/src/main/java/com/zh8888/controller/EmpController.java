@@ -1,8 +1,8 @@
 package com.zh8888.controller;
 
-import com.zh8888.pojo.Emp;
-import com.zh8888.pojo.EmpPageParam;
-import com.zh8888.pojo.Result;
+import com.zh8888.pojo.entity.Emp;
+import com.zh8888.pojo.page.EmpPageParam;
+import com.zh8888.pojo.dto.Result;
 import com.zh8888.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
