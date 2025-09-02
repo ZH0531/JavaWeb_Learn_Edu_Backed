@@ -5,13 +5,17 @@ import com.github.pagehelper.PageHelper;
 import com.zh8888.mapper.ClazzMapper;
 import com.zh8888.pojo.Clazz;
 import com.zh8888.pojo.ClazzPageParam;
+import com.zh8888.pojo.Emp;
 import com.zh8888.pojo.PageResult;
 import com.zh8888.service.ClazzService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
+@Slf4j
 @Service
 public class ClazzServiceImpl implements ClazzService {
     @Autowired
@@ -23,15 +27,30 @@ public class ClazzServiceImpl implements ClazzService {
 
         Page<Clazz> clazzList = (Page<Clazz>) clazzMapper.page(param);
         clazzList.forEach(clazz -> {
-           if (clazz.getEndDate().isBefore(LocalDate.now()))
-               clazz.setStatus("已结课");
-           else if (clazz.getBeginDate().isAfter(LocalDate.now()))
-               clazz.setStatus("未开班");
-           else
-               clazz.setStatus("在读中");
+            if (clazz.getEndDate().isBefore(LocalDate.now()))
+                clazz.setStatus("已结课");
+            else if (clazz.getBeginDate().isAfter(LocalDate.now()))
+                clazz.setStatus("未开班");
+            else
+                clazz.setStatus("在读中");
 
         });
 
         return new PageResult<>(clazzList.getTotal(), clazzList.getResult());
+    }
+
+    @Override
+    public void addClazz(Clazz clazz) {
+        clazz.setCreateTime(LocalDateTime.now());
+        clazz.setUpdateTime(LocalDateTime.now());
+        clazzMapper.insert(clazz);
+    }
+
+    @Override
+    public Clazz getClazzById(Integer id) {
+        log.info("查询班级{}", id);
+        Clazz clazz = clazzMapper.getClazzById(id);
+        log.info("查询班级{}结果{}", id, clazz);
+        return clazz;
     }
 }

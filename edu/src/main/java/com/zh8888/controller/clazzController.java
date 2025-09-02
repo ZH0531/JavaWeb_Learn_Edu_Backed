@@ -1,16 +1,10 @@
 package com.zh8888.controller;
 
-import com.zh8888.pojo.Clazz;
-import com.zh8888.pojo.ClazzPageParam;
-import com.zh8888.pojo.PageResult;
-import com.zh8888.pojo.Result;
+import com.zh8888.pojo.*;
 import com.zh8888.service.ClazzService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +22,21 @@ public class clazzController {
         PageResult<Clazz> clazzList = clazzService.page(param);
         return Result.success(clazzList);
     }
+
+    @PostMapping
+    public Result addClazz(@RequestBody Clazz clazz) {
+        log.info("添加班级");
+        log.info("参数：{}", clazz);
+        clazzService.addClazz(clazz);
+        return Result.success();
+    }
+
+    @GetMapping("/{id}")
+    public Result getClazzById(@PathVariable Integer id) {
+        log.info("查询班级byID");
+        log.info("参数：{}", id);
+        return Result.success(clazzService.getClazzById(id));
+    }
+
 
 }

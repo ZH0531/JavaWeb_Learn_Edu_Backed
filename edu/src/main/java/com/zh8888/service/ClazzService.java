@@ -6,6 +6,10 @@ import com.zh8888.pojo.PageResult;
 
 
 public interface ClazzService {
+
     PageResult<Clazz> page(ClazzPageParam param);
 
+    void addClazz(Clazz clazz);
+
+    Clazz getClazzById(Integer id);
 }

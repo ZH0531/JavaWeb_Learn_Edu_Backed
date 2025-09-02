@@ -11,4 +11,9 @@ public interface ClazzMapper {
 
 
     List<Clazz> page(ClazzPageParam param);
+
+    void insert(Clazz clazz);
+
+    Clazz getClazzById(Integer id);
+
 }
