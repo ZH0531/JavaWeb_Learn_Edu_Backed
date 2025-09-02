@@ -16,23 +16,21 @@ public class clazzController {
 
     @GetMapping
     public Result page(ClazzPageParam param) {
-        log.info("查询班级信息：{}", param);
+        log.info("分页查询班级参数：{}", param);
         PageResult<Clazz> clazzList = clazzService.page(param);
         return Result.success(clazzList);
     }
 
     @PostMapping
     public Result addClazz(@RequestBody Clazz clazz) {
-        log.info("添加班级");
-        log.info("参数：{}", clazz);
+        log.info("添加班级:{}", clazz);
         clazzService.addClazz(clazz);
         return Result.success();
     }
 
     @GetMapping("/{id}")
     public Result getClazzById(@PathVariable Integer id) {
-        log.info("查询班级byID");
-        log.info("参数：{}", id);
+        log.info("根据ID查询班级参数：{}", id);
         return Result.success(clazzService.getClazzById(id));
     }
 

@@ -34,23 +34,20 @@ public class EmpController {
 
     @DeleteMapping
     public Result deleteById(@RequestParam List<Integer> ids) {
-        log.info("批量删除员工");
-        log.info("参数：{}", ids);
+        log.info("批量删除员工:{}", ids);
         empService.deleteById(ids);
         return Result.success();
     }
 
     @GetMapping("/{id}")
     public Result getEmpById(@PathVariable Integer id) {
-        log.info("查询员工byID");
-        log.info("参数：{}", id);
+        log.info("查询员工byID:{}", id);
         return Result.success(empService.getEmpById(id));
     }
 
     @PutMapping
     public Result updateEmp(@RequestBody Emp emp) {
-        log.info("更新员工");
-        log.info("参数：{}", emp);
+        log.info("更新员工:{}", emp);
         empService.updateEmp(emp);
         log.info("更新员工基本信息成功");
         empService.updateEmpExpr(emp);
