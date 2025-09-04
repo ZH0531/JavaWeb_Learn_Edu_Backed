@@ -3,7 +3,7 @@ package com.zh8888.service.Impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.zh8888.pojo.page.EmpPageParam;
-import com.zh8888.utils.AliyunOSSOperator;
+import com.zh8888.utils.AliyunOSSUtil;
 import com.zh8888.mapper.EmpMapper;
 import com.zh8888.pojo.entity.Emp;
 import com.zh8888.pojo.entity.EmpExpr;
@@ -27,7 +27,7 @@ public class EmpServiceImpl implements EmpService {
     private EmpMapper empMapper;
 
     @Autowired
-    private AliyunOSSOperator aliyunOSSOperator;
+    private AliyunOSSUtil aliyunOSSUtil;
 
     /**
      * 分页查询员工信息
@@ -72,7 +72,7 @@ public class EmpServiceImpl implements EmpService {
         ids.forEach(id -> {
             try {
                 log.info("删除员工图片路径：{}", getEmpById(id).getImage());
-                aliyunOSSOperator.delete(getEmpById(id).getImage());
+                aliyunOSSUtil.delete(getEmpById(id).getImage());
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

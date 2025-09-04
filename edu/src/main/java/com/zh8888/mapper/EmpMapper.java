@@ -33,4 +33,6 @@ public interface EmpMapper {
     @MapKey("job")
     List<Map<String, Object>> getEmpJobData();
 
+
+    Emp getEmpByUsernameAndPassword(String username, String password);
 }

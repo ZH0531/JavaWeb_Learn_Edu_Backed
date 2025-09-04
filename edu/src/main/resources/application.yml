@@ -11,17 +11,14 @@ spring:
       max-file-size: 10MB
       max-request-size: 100MB
 
-
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 打印sql
     map-underscore-to-camel-case: true # 开启驼峰命名
 
-
 logging:
   level:
     org.springframework.jdbc.support.JdbcTransactionManager: info # 开启数据库日志
-
 
 aliyun: # 阿里云OSS配置
   oss:
@@ -29,4 +26,7 @@ aliyun: # 阿里云OSS配置
     bucket-name: zh8888-test
     region: cn-hangzhou
 
-
+jwt: # JWT配置
+  secret-key: Y29tLnpoODg4OC5lZHVfdGVzdF90b2tlbi16aDA1MzEK # 密钥(Base64编码，至少32字节)
+  # com.zh8888.edu_test_token-zh0531
+  expiration: 3600000 # 过期时间(毫秒)

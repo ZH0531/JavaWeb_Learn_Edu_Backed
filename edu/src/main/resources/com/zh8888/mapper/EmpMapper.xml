@@ -115,5 +115,11 @@
         group by job
         order by data
     </select>
+    <select id="getEmpByUsernameAndPassword" resultType="com.zh8888.pojo.entity.Emp">
+        select id, username, name
+        from emp
+        where username = #{username}
+          and password = #{password}
+    </select>
 
 </mapper>

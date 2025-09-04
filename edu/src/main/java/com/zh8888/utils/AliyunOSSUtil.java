@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Component
-public class AliyunOSSOperator {
+public class AliyunOSSUtil {
 
 
     @Autowired
