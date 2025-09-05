@@ -25,7 +25,7 @@ public class DeptController {
 
     @DeleteMapping
     public Result deleteById(Integer id) {
-        deptService.deleteById(id);
+        deptService.deleteDeptById(id);
         log.info("删除部门信息：id={}", id);
         return Result.success();
     }

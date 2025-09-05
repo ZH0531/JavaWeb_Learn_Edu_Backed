@@ -12,7 +12,7 @@ public interface EmpService {
 
     void addEmp(Emp emp);
 
-    void deleteById(List<Integer> ids);
+    void deleteEmpById(List<Integer> ids);
 
     Emp getEmpById(Integer id);
 

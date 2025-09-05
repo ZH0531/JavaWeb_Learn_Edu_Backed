@@ -1,4 +1,4 @@
-package com.zh8888.expression;
+package com.zh8888.exception;
 
 import com.zh8888.pojo.dto.Result;
 import lombok.extern.slf4j.Slf4j;

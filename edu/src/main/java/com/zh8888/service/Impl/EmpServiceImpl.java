@@ -68,7 +68,7 @@ public class EmpServiceImpl implements EmpService {
      */
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void deleteById(List<Integer> ids) {
+    public void deleteEmpById(List<Integer> ids) {
         ids.forEach(id -> {
             try {
                 log.info("删除员工图片路径：{}", getEmpById(id).getImage());

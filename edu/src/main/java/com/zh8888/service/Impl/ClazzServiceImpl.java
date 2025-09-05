@@ -2,7 +2,7 @@ package com.zh8888.service.Impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.zh8888.expression.ClazzNotEmptyException;
+import com.zh8888.exception.ClazzNotEmptyException;
 import com.zh8888.mapper.ClazzMapper;
 import com.zh8888.pojo.entity.Clazz;
 import com.zh8888.pojo.page.ClazzPageParam;

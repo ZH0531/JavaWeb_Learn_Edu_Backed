@@ -27,13 +27,15 @@ public class LoginServiceImpl implements LoginService {
         LoginResult loginResult = new LoginResult();
 
         if (loginEmp != null) {
+            // 登录成功
             loginResult.setId(loginEmp.getId());
             loginResult.setUsername(loginEmp.getUsername());
             loginResult.setName(loginEmp.getName());
-
+            // 生成token
             Map<String, Object> claims = new HashMap<>();
             claims.put("id", loginEmp.getId());
             claims.put("username", loginEmp.getUsername());
+
             String token = jwtUtil.generateToken(claims);
             loginResult.setToken(token);
 

@@ -8,7 +8,7 @@ public interface DeptService {
 
     List<Dept> findAll();
 
-    void deleteById(Integer id);
+    void deleteDeptById(Integer id);
 
     void addDept(Dept dept);
 

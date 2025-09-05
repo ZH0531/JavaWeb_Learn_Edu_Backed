@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <!--
+        logback-spring.xml 是 Spring Boot 推荐的方式，
+        因为可以使用 Spring 提供的变量（比如 PID、环境变量）。
+    -->
+
+    <!-- 定义一个 SpringProperty 来获取当前 JVM 进程 ID -->
+    <springProperty scope="context" name="PID" source="PID" defaultValue="????"/>
+
+    <!-- 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--
+                %d{yyyy-MM-dd HH:mm:ss.SSS} : 日期时间
+                %-5level                   : 日志级别（固定宽度，左对齐）
+                ${PID}                     : JVM 进程 ID
+                - - -                      : 分隔符
+                [%t]                       : 线程名
+                %logger{50}                : 打印日志的类名（最多50字符）
+                : %msg                     : 日志内容
+                %n                         : 换行符
+            -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ${PID} --- [%t] %logger{50} : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 系统文件输出 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--
+            使用基于大小和时间的滚动策略：
+            每天生成一个日志文件，单个文件超过 maxFileSize 会切分新文件。
+        -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 日志文件路径和名称，%i 表示同一天的序号 -->
+            <FileNamePattern>D:/Desktop/Learn/JavaWeb_Learn/EduSystem/EduSystemBacked/Edu_Backed/log/%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+
+            <!-- 最多保留30天的日志 -->
+            <MaxHistory>30</MaxHistory>
+
+            <!-- 单个日志文件最大 10MB，超过后自动切分 -->
+            <maxFileSize>10MB</maxFileSize>
+        </rollingPolicy>
+
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level ${PID} --- [%t] %logger{50} : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 日志输出级别配置 -->
+    <root level="info">
+        <!-- 输出到控制台 -->
+        <appender-ref ref="STDOUT"/>
+        <!-- 输出到日志文件 -->
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>

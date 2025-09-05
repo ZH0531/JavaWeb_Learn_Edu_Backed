@@ -2,7 +2,7 @@ package com.zh8888.service.Impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.zh8888.expression.ScoreOutOfRangeException;
+import com.zh8888.exception.ScoreOutOfRangeException;
 import com.zh8888.mapper.StudentMapper;
 import com.zh8888.pojo.dto.PageResult;
 import com.zh8888.pojo.entity.Student;
